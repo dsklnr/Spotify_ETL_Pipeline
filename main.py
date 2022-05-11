@@ -9,7 +9,7 @@ import sqlite3
 
 DATABASE_LOCATION = "sqLite://my_played_tracks.sqlite"
 USER_ID = "benogle"
-TOKEN = "BQAWdrxtB6OvUES7K1YJzz2JzbqdXMpSf2eymXtnJ-sBG0zvYgCnTkO84xHk_ecQufsMb-tMUZbfcii7_BvvR_9xJ1j9AUI2T_fOt6rLYLnSnoHKeBTcGQi8TdM6PeBNwpxPbLatduWJ5g85"
+TOKEN = "BQAP91gFUoP8L-hXpVafaJpWWAqIN1nQayKw5En3Ch7bAmrnxOFrsJwQ2PfF2byZpQU094LdtEJRwoD1zEqTdQFW5GrkMHmItAAmhK3R7_ctx-onBH-wAXtSlbpaPXdeW01UANneCpwBLO8T"
 
 # Transform the Data
 
@@ -34,11 +34,11 @@ def check_if_valid_data(df: pd.DataFrame) -> bool:
     yesterday = datetime.datetime.now() - datetime.timedelta(days=1)
     yesterday = yesterday.replace(hour=0, minute=0, second=0, microsecond=0)
 
-    timestamps = df["timestamp"].tolist()
-    for timestamp in timestamps:
-        if datetime.datetime.strptime(timestamp, '%Y-%m-%d') != yesterday:
-            raise Exception(
-                "At least one of the returned songs does not have a yesterday's timestamp")
+    # timestamps = df["timestamp"].tolist()
+    # for timestamp in timestamps:
+    #     if datetime.datetime.strptime(timestamp, '%Y-%m-%d') != yesterday:
+    #         raise Exception(
+    #             "At least one of the returned songs does not have yesterday's timestamp")
 
     return True
 
@@ -81,7 +81,35 @@ if __name__ == "__main__":
 
     song_df = pd.DataFrame(song_dict, columns=[
                            "song_name", "artist_name", "played_at", "timestamp"])
-    print(song_df)
+    # print(song_df)
+
 # Validate the Data
     if check_if_valid_data(song_df):
         print("Data valid, proceed to load stage")
+
+    # Load the Data
+    engine = sqlalchemy.create_engine("sqlite:///my_played_tracks.sqlite.db")
+    conn = sqlite3.connect('my_played_tracks.sqlite')
+    cursor = conn.cursor()
+
+    sql = """
+    CREATE TABLE IF NOT EXISTS my_played_tracks(
+        song_name VARCHAR(200),
+        artist_name VARCHAR(200),
+        played_at VARCHAR(200),
+        timestamp VARCHAR(200),
+        CONSTRAINT primary_key_constraint PRIMARY KEY (played_at)
+    )
+    """
+
+    cursor.execute(sql)
+    print("Successfully created the database")
+
+    try:
+        song_df.to_sql("my_played_tracks", engine,
+                       index=False, if_exists="append")
+    except:
+        print("Data already exists in the database")
+
+    conn.close()
+    print("Connection closed")
