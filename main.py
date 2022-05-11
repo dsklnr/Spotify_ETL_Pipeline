@@ -9,7 +9,7 @@ import sqlite3
 
 DATABASE_LOCATION = "sqLite://my_played_tracks.sqlite"
 USER_ID = "benogle"
-TOKEN = "BQAP91gFUoP8L-hXpVafaJpWWAqIN1nQayKw5En3Ch7bAmrnxOFrsJwQ2PfF2byZpQU094LdtEJRwoD1zEqTdQFW5GrkMHmItAAmhK3R7_ctx-onBH-wAXtSlbpaPXdeW01UANneCpwBLO8T"
+TOKEN = "BQDV_qY7Y6UszrflQauc698VuidFu6LhmpGfSshLLnPXpQpzcQxPqhS5se7sexFMznxodLKwCoj7tmh8RnDGPyIUTyAsXrCC03QR4Qn6Y2jjfRmjqYNao5dPnQ8navAjCN6734sYjjrhoJ_t"
 
 # Transform the Data
 
@@ -34,11 +34,11 @@ def check_if_valid_data(df: pd.DataFrame) -> bool:
     yesterday = datetime.datetime.now() - datetime.timedelta(days=1)
     yesterday = yesterday.replace(hour=0, minute=0, second=0, microsecond=0)
 
-    # timestamps = df["timestamp"].tolist()
-    # for timestamp in timestamps:
-    #     if datetime.datetime.strptime(timestamp, '%Y-%m-%d') != yesterday:
-    #         raise Exception(
-    #             "At least one of the returned songs does not have yesterday's timestamp")
+    timestamps = df["timestamp"].tolist()
+    for timestamp in timestamps:
+        if datetime.datetime.strptime(timestamp, '%Y-%m-%d') == yesterday:
+            raise Exception(
+                "At least one of the returned songs does not have yesterday's timestamp")
 
     return True
 
@@ -88,7 +88,7 @@ if __name__ == "__main__":
         print("Data valid, proceed to load stage")
 
     # Load the Data
-    engine = sqlalchemy.create_engine("sqlite:///my_played_tracks.sqlite.db")
+    engine = sqlalchemy.create_engine("sqlite:///my_played_tracks.sqlite")
     conn = sqlite3.connect('my_played_tracks.sqlite')
     cursor = conn.cursor()
 
@@ -106,8 +106,9 @@ if __name__ == "__main__":
     print("Successfully created the database")
 
     try:
-        song_df.to_sql("my_played_tracks", engine,
+        song_df.to_sql("my_played_tracks", con=engine,
                        index=False, if_exists="append")
+        print("Data loaded into database")
     except:
         print("Data already exists in the database")
 
