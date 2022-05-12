@@ -26,19 +26,22 @@ This project was designed to learn how to make a basic ETL pipeline. The main pu
 To begin this project I had to create an account on spotify. Then I had to listen to at least 20 songs in order for the spotify API to work properly. First I needed to generate a token for my recenly played tracks. I did that here: https://developer.spotify.com/console/get-recently-played/?limit=&after=1652408889&before=. The next day I was able to start creating my ETL pipeline using Python. In Python I created a database location for my sqlite database, a USER_ID that is assigned to my spotify username, and a token that is assigned to the generated token from the previous link.
 <br/>
 <br/>
-<img src="https://imgur.com/LORpS5m.png" height="100%" width="100%" alt="Dashboard Screen"/>
+<img src="https://imgur.com/LORpS5m.png" height="100%" width="100%" alt="O-Auth Spotify"/>
 <br />
 <br />
-New parts are either created in-house or by an outsourced party. A toggle group is created to keep track of this selection. In-house parts require a 
-machine ID and outsourced parts require a company name.
+<b>Extract:</b>
 <br/>
 <br/>
-Add a New In-House Part:  <br/>
-<img src="https://imgur.com/8GWNFWs.png" height="50%" width="50%" alt="Add In-House Part"/>
+Following the Spotify API documentation, I need to make requests to obtain some data. I have decided to get music data from the last 24 hours (might change this later). Then I run the requests and convert the data to JSON format
+<br/>
+<br/>
+<img src="https://imgur.com/OQ7vSVG.png" height="65%" width="65%" alt="Make Requests"/>
 <br />
 <br />
-Add an Outsourced Part: <br/>
-<img src="https://imgur.com/V5SgYm1.png" height="50%" width="50%" alt="Add Outsourced Part"/>
+Next I initialized arrays for song names, artist names, played at list, and timestamps. Then I created a for loop to search for song names, artist names, played at time, and timestamp within the JSON requests received from the Spotify API that would add data to my arrays. Then I created a dictionary to store columns that display the data inserted into the corresponding array. Finally a Pandas dataframe was created to create a list of columns to display a tableview of the data.
+<br/>
+<br/>
+<img src="https://imgur.com/A9MtYYH.png" height="55%" width="55%" alt="Add Outsourced Part"/>
 <br />
 <br />
 Parts can be modified by selecting a part in the parts table and clicking the modify button below the parts table.
