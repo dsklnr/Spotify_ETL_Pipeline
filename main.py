@@ -36,7 +36,7 @@ def check_if_valid_data(df: pd.DataFrame) -> bool:
 
     timestamps = df["timestamp"].tolist()
     for timestamp in timestamps:
-        if datetime.datetime.strptime(timestamp, '%Y-%m-%d') == yesterday:
+        if datetime.datetime.strptime(timestamp, '%Y-%m-%d') != yesterday:
             raise Exception(
                 "At least one of the returned songs does not have yesterday's timestamp")
 
