@@ -1,1 +1,0 @@
-# Spotify_Recently_Played_ETL_Pipeline
