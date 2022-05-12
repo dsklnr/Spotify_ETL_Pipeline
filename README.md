@@ -44,11 +44,14 @@ Next I initialized arrays for song names, artist names, played at list, and time
 <img src="https://imgur.com/A9MtYYH.png" height="55%" width="55%" alt="Add Outsourced Part"/>
 <br />
 <br />
-Parts can be modified by selecting a part in the parts table and clicking the modify button below the parts table.
+<b>Transform:</b>
 <br />
 <br />
-Modify a Part  <br/>
-<img src="https://imgur.com/P1IYsrB.png" height="50%" width="50%" alt="Modify Part"/>
+After extracting the data, it is time to transform the data. Here I am validating the data meets basic requirements for the project. I don't want to recieve and empty data set, I don't want two songs with the same played at time (my primary key), I dont want any null values, and I dont want to recieve songs that aren't from the past 24 hours. If all of these conditions are false, the program will continue to the load stage.
+<br />
+<br />
+<img src="https://imgur.com/E9UEtqW.png" height="55%" width="55%" alt="Modify Part"/> <br />
+<img src="https://imgur.com/Flpk3Kh.png" height="30%" width="30%" alt="Modify Part"/>
 <br />
 <br />
 Parts can be deleted by selecting a part in the parts table and clicking the delete button below the parts table.
