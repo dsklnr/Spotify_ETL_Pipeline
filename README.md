@@ -54,39 +54,13 @@ After extracting the data, it is time to transform the data. Here I am validatin
 <img src="https://imgur.com/Flpk3Kh.png" height="30%" width="30%" alt="Modify Part"/>
 <br />
 <br />
-Parts can be deleted by selecting a part in the parts table and clicking the delete button below the parts table.
+<b>Load:</b>
 <br />
 <br />
-Delete Part:  <br/>
-<img src="https://imgur.com/BWLHb1T.png" height="100%" width="100%" alt="Delete Part"/>
+Now the data is ready to be exported into a sql database. This can be done by creating an engine, a connection to the database, and a cursor. Then a simple table is created to hold the data we have collected earlier in the process. The cursor will execute creating the table in the database. Then our data will be passed into the table. If data already exists in the database, the new data will be added below the last value. Then the connection can be closed because the data has successfully been imported to the database.
 <br />
 <br />
-Add Product:  <br/>
-<img src="https://imgur.com/tGQDpIH.png" height="80%" width="80%" alt="Add Product"/>
-<br />
-<br />
-On the right side of the add product form, there are two different parts tables. The top parts table displays all parts. Users should select a part and
-click the add button to add the part to the second parts table. The bottom parts table displays a list of all parts required to create the product.
-<br />
-<br />
-Add Parts to the Product:  <br/>
-<img src="https://imgur.com/h1oq5eT.png" height="80%" width="80%" alt="Adding Parts to Product"/>
-<br />
-<br />
-Products can be modified by selecting a product in the product table and clicking the modify button below the product table.
-<br />
-<br />
-Update Product:  <br/>
-<img src="https://imgur.com/xBNYA1T.png" height="80%" width="80%" alt="Update Product"/>
-<br />
-<br />
-Products can be deleted by selecting a product in the products table and clicking the delete button below the products table. Note that all associated parts must be removed before a product can be deleted.
-<br />
-<br />
-Delete Product:  <br/>
-<img src="https://imgur.com/3aaKqWd.png" height="100%" width="100%" alt="Delete Product"/>
-<br />
-<br />
+<img src="https://imgur.com/6ZYLyzs.png" height="45%" width="45%" alt="Delete Part"/>
 </p>
 
 <!--
