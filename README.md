@@ -23,7 +23,7 @@ This project was designed to learn how to make a basic ETL pipeline. The main pu
 <h2>Program walk-through:</h2>
 
 <p align="left">
-To begin this project I had to create an account on spotify. Then I had to listen to at least 20 songs in order for the spotify API to work properly. The next day I was able to start creating my ETL pipeline using Python. First I needed to generate a token for my recenly played tracks. I did that here: https://developer.spotify.com/console/get-recently-played/?limit=&after=1652408889&before=. Then in python I created a database location for my sqlite database, a USER_ID that is assigned to my spotify username, and a token that is assigned to the generated token from the previous link.
+To begin this project I had to create an account on spotify. Then I had to listen to at least 20 songs in order for the spotify API to work properly. First I needed to generate a token for my recenly played tracks. I did that here: https://developer.spotify.com/console/get-recently-played/?limit=&after=1652408889&before=. The next day I was able to start creating my ETL pipeline using Python. In Python I created a database location for my sqlite database, a USER_ID that is assigned to my spotify username, and a token that is assigned to the generated token from the previous link.
 <br/>
 <br/>
 <img src="https://imgur.com/LORpS5m.png" height="100%" width="100%" alt="Dashboard Screen"/>
