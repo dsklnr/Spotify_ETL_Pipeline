@@ -29,9 +29,7 @@ To begin this project I had to create an account on spotify. Then I had to liste
 <img src="https://imgur.com/LORpS5m.png" height="100%" width="100%" alt="O-Auth Spotify"/>
 <br />
 <br />
-<b>Extract:</b>
-<br/>
-<br/>
+<h3>Extract</h3>
 Following the Spotify API documentation, I need to make requests to obtain some data. I have decided to get music data from the last 24 hours (might change this later). Then I run the requests and convert the data to JSON format
 <br/>
 <br/>
@@ -44,9 +42,7 @@ Next I initialized arrays for song names, artist names, played at list, and time
 <img src="https://imgur.com/A9MtYYH.png" height="55%" width="55%" alt="Add Outsourced Part"/>
 <br />
 <br />
-<b>Transform:</b>
-<br />
-<br />
+<h3>Transform</h3>
 After extracting the data, it is time to transform the data. Here I am validating the data meets basic requirements for the project. I don't want to recieve and empty data set, I don't want two songs with the same played at time (my primary key), I dont want any null values, and I dont want to recieve songs that aren't from the past 24 hours. If all of these conditions are false, the program will continue to the load stage.
 <br />
 <br />
@@ -54,14 +50,19 @@ After extracting the data, it is time to transform the data. Here I am validatin
 <img src="https://imgur.com/Flpk3Kh.png" height="30%" width="30%" alt="Modify Part"/>
 <br />
 <br />
-<b>Load:</b>
-<br />
-<br />
+<h3>Load</h3>
 Now the data is ready to be exported into a sql database. This can be done by creating an engine, a connection to the database, and a cursor. Then a simple table is created to hold the data we have collected earlier in the process. The cursor will execute creating the table in the database. Then our data will be passed into the table. If data already exists in the database, the new data will be added below the last value. Then the connection can be closed because the data has successfully been imported to the database.
 <br />
 <br />
 <img src="https://imgur.com/6ZYLyzs.png" height="45%" width="45%" alt="Delete Part"/>
 </p>
+<br />
+<br />
+
+<h2>Upcoming Updates</h2>
+I am working on installing apache airflow to automate the script to run each night. Plus I would like to automate obtaining a valid O-auth token for Spotify. It is a bit of a hassle to download a new token each time I want to run the script.
+<br />
+<br />
 
 <!--
  ```diffd
